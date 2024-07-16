@@ -3,12 +3,21 @@ package ru.kata.spring.boot_security.demo.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ru.kata.spring.boot_security.demo.services.RoleService;
+import ru.kata.spring.boot_security.demo.services.UserService;
 
 @Controller
-@RequestMapping("/login")
-public class AuthController {
+@RequestMapping("/")
+public class IndexController {
+    private UserService userService;
+    private RoleService roleService;
+
+    public IndexController(UserService userService, RoleService roleService) {
+        this.userService = userService;
+        this.roleService = roleService;
+    }
     @GetMapping
-    public String loginPage() {
-        return "login";
+    public String indexPage() {
+        return "index";
     }
 }
