@@ -3,12 +3,10 @@ package ru.kata.spring.boot_security.demo.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import ru.kata.spring.boot_security.demo.entity.Role;
 import ru.kata.spring.boot_security.demo.entity.User;
 import ru.kata.spring.boot_security.demo.services.RoleService;
 import ru.kata.spring.boot_security.demo.services.UserService;
-
 import java.security.Principal;
 import java.util.HashSet;
 import java.util.List;
@@ -70,9 +68,7 @@ public class AdminController {
         user.setPassword(null);
         user.setRolesId(new int[user.getRoles().size()]);
         int i = 0;
-        for (Role role : user.getRoles()) {
-            user.getRolesId()[i++] = role.getId();
-        }
+        for (Role role : user.getRoles())
         model.addAttribute("user", user);
         model.addAttribute("roleList", roleService.findAll());
         return "deleteUserForm";
